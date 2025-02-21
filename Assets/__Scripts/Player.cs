@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -9,12 +10,16 @@ public class Player : MonoBehaviour
 
 	// Create private reference to the rigidbody component on the player
 	private Rigidbody rb;
+	private int count;
 
 	// At the start of the game..
 	void Start ()
 	{
 		// Assign the Rigidbody component to our private rb variable
 		rb = GetComponent<Rigidbody>();
+
+		// Set the count to zero 
+		count = 0;
 	}
 
 	// Each physics step..
@@ -41,6 +46,22 @@ public class Player : MonoBehaviour
 		{
 			// Make the other game object (the pick up) inactive, to make it disappear
 			other.gameObject.SetActive (false);
+
+			// Add one to the score variable 'count'
+			count = count + 1;
+
+			// Run the 'SetCount()' function (see below)
+			SetCount();
+		}
+	}
+
+	void SetCount()
+	{
+		// Check if our 'count' is equal to or exceeded 80
+		if (count >= 80)
+		{
+			// Restart the game
+			SceneManager.LoadScene("Maze");
 		}
 	}
 }
