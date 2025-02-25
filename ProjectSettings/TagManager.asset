@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pick Up
+  - Bad Guy
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bad Guy
   - Water
   - UI
   - 
